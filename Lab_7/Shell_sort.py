@@ -135,7 +135,7 @@ def main():
         
     shell(tab_2)
     print(tab_2)
-    print("NIESTABILNE")
+    print("STABILNE")
 
     tab_3 = [int(random.random() * 100) for i in range(10000)]
     tab_4 = tab_3.copy()
