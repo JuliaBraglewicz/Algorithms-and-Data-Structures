@@ -152,13 +152,66 @@ class GraphList:
     
     def get_vertex(self, vertex_id):
         return vertex_id
+        
+def greedy_coloring(graph, search):
+    result = []
+    neighbours_color = {}
+    visited = set()
+    if search == 'DFS':
+        stack = []
+        iterator = iter(graph.vertices())
+        id = next(iterator)
+        stack.append(id)
+        while stack:
+            vertex_id = stack.pop()
+            if vertex_id not in visited:
+                visited.add(vertex_id)
+                colors = set()
+                for n, _ in graph.neighbours(vertex_id):
+                    if n in neighbours_color:
+                        colors.add(neighbours_color[n])
+                i = 0
+                while i in colors:
+                    i += 1
+                neighbours_color[vertex_id] = i
+                result.append((repr(graph.get_vertex(vertex_id)), i))
+                for n, _ in reversed(list(graph.neighbours(vertex_id))):
+                    if n not in visited:
+                        stack.append(n)
+    elif search =='BFS':
+        queue = []
+        iterator = iter(graph.vertices())
+        id = next(iterator)
+        queue.append(id)
+        visited.add(id)
+        while queue:
+            vertex_id = queue.pop(0)
+            colors = set()
+            for n, _ in graph.neighbours(vertex_id):
+                if n in neighbours_color:
+                    colors.add(neighbours_color[n])
+            i = 0
+            while i in colors:
+                i += 1
+            neighbours_color[vertex_id] = i
+            result.append((repr(graph.get_vertex(vertex_id)), i))
+            for n, _ in graph.neighbours(vertex_id):
+                if n not in visited:
+                    visited.add(n)
+                    queue.append(n)
+    else:
+        raise Exception("Wrong searching algorithm!")
+    polska.draw_map(graph, result)
+        
 
 def main():
     matrix_graph = GraphMatrix()
     list_graph = GraphList()
     vertices = {}
+    colors = []
     
     for rej in polska.slownik.keys():
+        colors.append((rej, 1))
         vertex = Vertex(rej)
         matrix_graph.insert_vertex(vertex)
         list_graph.insert_vertex(vertex)
@@ -168,13 +221,8 @@ def main():
         matrix_graph.insert_edge(vertices[i], vertices[j])
         list_graph.insert_edge(vertices[i], vertices[j])
 
-    matrix_graph.delete_vertex(vertices['K'])
-    matrix_graph.delete_edge(vertices['W'], vertices['E'])
-    polska.draw_map(matrix_graph)
-
-    list_graph.delete_vertex(vertices['K'])
-    list_graph.delete_edge(vertices['W'], vertices['E'])
-    polska.draw_map(list_graph)
+    greedy_coloring(matrix_graph, 'DFS')
+    greedy_coloring(matrix_graph, 'BFS')
 
 if __name__ == "__main__":
     main()
