@@ -10,3 +10,4 @@ This course is divided into two parts: the first focuses on data structures, whi
 * Lab_5: Binary search tree, AVL tree
 * Lab_6: Heap-based priority queue, Simplified B-tree
 * Lab_7: Heapsort and selection sort, Shell sort
+* Lab_8: Classical graph implementations, Graph coloring
