@@ -1,2 +1,3 @@
 *.txt
+!lotr.txt
 __pycache__/

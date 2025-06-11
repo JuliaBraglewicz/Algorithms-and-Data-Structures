@@ -110,7 +110,6 @@ def printGraph(g):
         print()
     print("-------------------")
 
-    
 def main():
     graph = GraphList()
 

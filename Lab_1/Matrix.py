@@ -21,7 +21,7 @@ class Matrix:
             for j in range(other.size()[1]):
                 for k in range(other.size()[0]):
                     new_matrix[i][j] += self[i][k] * other[k][j]
-        return Matrix(new_matrix)
+        return new_matrix
     
     def __getitem__(self, index):
         return self.__matrix[index]
@@ -52,6 +52,6 @@ def main():
     print(transpose(m1))
     print(m1 + m2)
     print(m1 * m3)
-    
+
 if __name__ == "__main__":
     main()

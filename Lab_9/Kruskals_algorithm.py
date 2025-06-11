@@ -122,7 +122,26 @@ def Kruskal_MST(graph):
             uf.union_sets(ord(v1) - 64, ord(v2) - 64)
             mst_edges.append((v1, v2, e))
             length += e
-    return mst_edges, length
+
+    MST = GraphList()
+
+    for v1, v2, edge in mst_edges:
+        vertex1 = Vertex(v1)
+        vertex2 = Vertex(v2)
+        MST.insert_vertex(vertex1)
+        MST.insert_vertex(vertex2)
+        MST.insert_edge(vertex1, vertex2, edge)
+
+    return MST, length
+
+def printGraph(g):
+    print("------GRAPH------")
+    for v in g.vertices():
+        print(v, end = " -> ")
+        for (n, w) in g.neighbours(v):
+            print(n, w, end=";")
+        print()
+    print("-------------------")
         
 def main():
     find_union =UnionFind(5)
@@ -145,9 +164,9 @@ def main():
         graph.insert_vertex(vertex2)
         graph.insert_edge(vertex1, vertex2, edge)
 
-    mst, length = Kruskal_MST(graph)
+    MST, length = Kruskal_MST(graph)
 
-    print(mst)
+    printGraph(MST)
 
 if __name__ == "__main__":
     main()
