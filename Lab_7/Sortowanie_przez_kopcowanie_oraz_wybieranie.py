@@ -118,7 +118,7 @@ def main():
         heap = Heap(tab)
         heap.print_tab()
         heap.print_tree(0, 0)
-        for _ in range(10):
+        while not heap.is_empty():
             heap.dequeue()
         print(heap.tab)
         print("NIESTABILNE")
@@ -137,7 +137,7 @@ def main():
         tab_2 = tab.copy()
         t_start = time.perf_counter()
         heap = Heap(tab)
-        for i in range(10000):
+        while not heap.is_empty():
             heap.dequeue()
         t_stop = time.perf_counter()
         print("Czas obliczeń heap sort:", "{:.7f}".format(t_stop - t_start))

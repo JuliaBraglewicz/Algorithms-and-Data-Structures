@@ -95,7 +95,6 @@ class GraphMatrix:
         id1 = self.vertices_lst.index(vertex1)
         id2 = self.vertices_lst.index(vertex2)
         self.matrix[id1][id2] = edge
-        # self.matrix[id2][id1] = edge
     
     def delete_vertex(self, vertex):
         id = self.vertices_lst.index(vertex)
@@ -112,7 +111,6 @@ class GraphMatrix:
         id1 = self.vertices_lst.index(vertex1)
         id2 = self.vertices_lst.index(vertex2)
         self.matrix[id1][id2] = self.val
-        # self.matrix[id2][id1] = self.val
 
     def neighbours(self, vertex_id):
         for id, edge in enumerate(self.matrix[vertex_id]):

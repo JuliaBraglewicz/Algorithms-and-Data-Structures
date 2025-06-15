@@ -111,7 +111,6 @@ def shell(tab):
             tab[j] = current
         h //= 3
 
-
 # def shell(tab): #alternatywna wersja ze swapowaniem (wolniejsza w tym przypadku)
 #     h = 1
 #     while h * 3 + 1 < len(tab) / 3:
