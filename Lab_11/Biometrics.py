@@ -1,3 +1,5 @@
+#not finished yet
+
 import matplotlib.pyplot as plt
 
 class Vertex:

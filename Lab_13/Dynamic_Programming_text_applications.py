@@ -175,6 +175,10 @@ def main():
     _, index = pattern_matching(P, T)
     print(index - len(P) + 2)
 
+    P = ' bin'
+    _, index = pattern_matching(P, T)
+    print(index - len(P) + 2)
+
     P = ' democrat'
     T = ' republican'
     _, R = longest_common_sequence(P, T)
